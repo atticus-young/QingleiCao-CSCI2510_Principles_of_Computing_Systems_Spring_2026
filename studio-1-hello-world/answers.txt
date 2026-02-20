@@ -1,0 +1,63 @@
+2. fprintf() header
+
+The required header file for fprintf() is:
+#include <stdio.h>
+
+
+3. Function signatures difference
+
+printf:
+int printf(const char *format, ...);
+
+fprintf:
+int fprintf(FILE *stream, const char *format, ...);
+
+The difference is that fprintf() includes a FILE* parameter to specify the destination stream, while printf() automatically outputs to stdout.
+
+
+4. Description differences
+
+According to the manual, printf() sends formatted output to standard output, whereas fprintf() sends formatted output to a stream chosen by the programmer.
+
+
+5. fprintf output
+
+Hello, world!
+
+
+6. System call section number
+
+System calls are documented in Section 2 of the Linux manual.
+
+
+7. write() header file
+
+The required header file for write() is:
+#include <unistd.h>
+
+
+8.
+
+
+9. Program using write()
+
+#include <unistd.h>
+
+int main(void) {
+
+    char buffer[] = "Hello, world!\n";
+
+    write(STDOUT_FILENO, buffer, 14);
+
+    return 0;
+}
+
+
+10. Character buffer behavior
+
+If the byte count exceeds the string length, write() continues reading memory beyond the string, which can result in random or unintended characters being printed.
+
+
+11. C library functions vs system calls
+
+C library functions are preferable for portability and ease of use, while system calls are useful when direct interaction with the operating system or finer control over behavior is required.
